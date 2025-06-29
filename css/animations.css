@@ -1,0 +1,312 @@
+/* Animations and Transitions */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Apply animations to elements */
+
+/* Task items fade in */
+.task-item {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Add button pulse on hover */
+.add-btn:hover {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Theme toggle bounce on click */
+.theme-toggle:active {
+  animation: bounce 0.3s ease-in-out;
+}
+
+/* Task checkbox scale animation */
+.task-checkbox {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-checkbox:checked {
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Action buttons hover effects */
+.action-btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Filter buttons active state */
+.filter-btn.active {
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Modal animations */
+.modal-overlay {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reminder notification slide in */
+.reminder-notification {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Empty state fade in */
+.empty-state {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Task completion animation */
+.task-text.completed {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.task-text.completed::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--border-color);
+  border-top: 2px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hover effects for interactive elements */
+.task-item:hover .task-actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.task-actions {
+  opacity: 0.7;
+  transform: translateX(5px);
+  transition: all 0.2s ease;
+}
+
+/* Focus states for accessibility */
+.task-input:focus,
+.tag-select:focus,
+.date-input:focus,
+.time-input:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Button press effects */
+.btn:active,
+.action-btn:active,
+.filter-btn:active {
+  transform: translateY(1px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Task item entrance animation with stagger */
+.task-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.task-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.task-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.task-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.task-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* Success animation for completed tasks */
+@keyframes successPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.task-item.completed {
+  animation: successPulse 0.6s ease-out;
+}
+
+/* Error shake animation for validation */
+@keyframes errorShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-2px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+.error {
+  animation: errorShake 0.5s ease-in-out;
+  border-color: var(--error) !important;
+}
+
+/* Smooth theme transition */
+body,
+.container,
+.header,
+.add-task-section,
+.task-item,
+.modal,
+.reminder-notification {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
