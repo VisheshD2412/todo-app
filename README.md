@@ -35,6 +35,10 @@ taskmanager/
 - [Font Awesome](https://fontawesome.com/) for icons
 - [Google Fonts: Inter](https://fonts.google.com/specimen/Inter)
 
+## 🌐 Live Demo
+
+👉 [Click here to view the live app](https://VisheshD2412.github.io/todo-app/)
+
 ## 🖥️ How to Run Locally
 
 1. **Clone or Download** this repository.
